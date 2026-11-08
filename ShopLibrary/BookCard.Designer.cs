@@ -116,7 +116,7 @@
             pnInfoBook.Dock = DockStyle.Fill;
             pnInfoBook.Location = new Point(216, 10);
             pnInfoBook.Name = "pnInfoBook";
-            pnInfoBook.Size = new Size(812, 225);
+            pnInfoBook.Size = new Size(766, 225);
             pnInfoBook.TabIndex = 7;
             // 
             // lbStatus
@@ -176,7 +176,7 @@
             Margin = new Padding(5);
             Name = "BookCard";
             Padding = new Padding(10);
-            Size = new Size(1038, 245);
+            Size = new Size(992, 245);
             ((System.ComponentModel.ISupportInitialize)pbBook).EndInit();
             pnInfoBook.ResumeLayout(false);
             pnInfoBook.PerformLayout();

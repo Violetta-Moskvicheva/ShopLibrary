@@ -5,9 +5,25 @@ namespace ShopLibrary
         [STAThread]
         static void Main()
         {
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            bool exiteProgram = false;
+
+            while (!exiteProgram)
+            {
+                using(var formBooks = new BooksForm())
+                {
+                    if(formBooks.ShowDialog() == DialogResult.OK)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        exiteProgram = true;
+                    }
+                }
+            }
         }
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooksForm));
             pnTop = new Panel();
             btLogout = new Button();
-            lbFio = new Label();
             flpBooks = new FlowLayoutPanel();
             pnTop.SuspendLayout();
             SuspendLayout();
@@ -40,7 +39,6 @@
             // 
             pnTop.BackColor = Color.AliceBlue;
             pnTop.Controls.Add(btLogout);
-            pnTop.Controls.Add(lbFio);
             pnTop.Dock = DockStyle.Top;
             pnTop.Location = new Point(0, 0);
             pnTop.Name = "pnTop";
@@ -59,16 +57,7 @@
             btLogout.TabIndex = 1;
             btLogout.Text = "Выйти";
             btLogout.UseVisualStyleBackColor = false;
-            // 
-            // lbFio
-            // 
-            lbFio.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lbFio.AutoSize = true;
-            lbFio.Location = new Point(887, 9);
-            lbFio.Name = "lbFio";
-            lbFio.Size = new Size(42, 17);
-            lbFio.TabIndex = 0;
-            lbFio.Text = "label1";
+            btLogout.Click += btLogout_Click;
             // 
             // flpBooks
             // 
@@ -78,7 +67,7 @@
             flpBooks.FlowDirection = FlowDirection.TopDown;
             flpBooks.Location = new Point(0, 55);
             flpBooks.Name = "flpBooks";
-            flpBooks.Size = new Size(1032, 327);
+            flpBooks.Size = new Size(1032, 519);
             flpBooks.TabIndex = 1;
             flpBooks.WrapContents = false;
             // 
@@ -87,15 +76,15 @@
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1032, 382);
+            ClientSize = new Size(1032, 574);
             Controls.Add(flpBooks);
             Controls.Add(pnTop);
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BooksForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Список книг";
             pnTop.ResumeLayout(false);
-            pnTop.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -104,6 +93,5 @@
         private Panel pnTop;
         private FlowLayoutPanel flpBooks;
         private Button btLogout;
-        private Label lbFio;
     }
 }
