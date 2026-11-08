@@ -13,6 +13,8 @@ namespace ShopLibrary
         public BooksForm()
         {
             InitializeComponent();
+            LoadBookForm();
+
         }
     }
 }
