@@ -8,21 +8,9 @@ namespace ShopLibrary
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            bool exiteProgram = false;
-
-            while (!exiteProgram)
+            using(var formBooks = new BooksForm())
             {
-                using(var formBooks = new BooksForm())
-                {
-                    if(formBooks.ShowDialog() == DialogResult.OK)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        exiteProgram = true;
-                    }
-                }
+                formBooks.ShowDialog();
             }
         }
     }

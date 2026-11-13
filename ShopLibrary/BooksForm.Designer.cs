@@ -42,7 +42,7 @@
             pnTop.Dock = DockStyle.Top;
             pnTop.Location = new Point(0, 0);
             pnTop.Name = "pnTop";
-            pnTop.Size = new Size(1032, 55);
+            pnTop.Size = new Size(896, 55);
             pnTop.TabIndex = 0;
             // 
             // btLogout
@@ -51,7 +51,7 @@
             btLogout.BackColor = Color.FromArgb(74, 111, 165);
             btLogout.FlatAppearance.BorderSize = 0;
             btLogout.FlatStyle = FlatStyle.Flat;
-            btLogout.Location = new Point(935, 3);
+            btLogout.Location = new Point(799, 3);
             btLogout.Name = "btLogout";
             btLogout.Size = new Size(94, 29);
             btLogout.TabIndex = 1;
@@ -67,23 +67,23 @@
             flpBooks.FlowDirection = FlowDirection.TopDown;
             flpBooks.Location = new Point(0, 55);
             flpBooks.Name = "flpBooks";
-            flpBooks.Size = new Size(1032, 519);
+            flpBooks.Size = new Size(896, 519);
             flpBooks.TabIndex = 1;
             flpBooks.WrapContents = false;
             // 
             // BooksForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1032, 574);
+            ClientSize = new Size(896, 574);
             Controls.Add(flpBooks);
             Controls.Add(pnTop);
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BooksForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Список книг";
+            Text = "\"Читай-город\" Список книг";
             pnTop.ResumeLayout(false);
             ResumeLayout(false);
         }

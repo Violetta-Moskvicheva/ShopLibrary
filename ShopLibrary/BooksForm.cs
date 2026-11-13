@@ -50,7 +50,7 @@ namespace ShopLibrary
 
         private void btLogout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Данная функция пока не доступка", "Ошибка",
+            MessageBox.Show($"Данная функция пока не доступна", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }

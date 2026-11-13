@@ -15,7 +15,7 @@ namespace ShopLibrary
         {
             pbBook.Image = LoadBookImage(book.Image);
 
-            lbISBNAndName.Text = $"{book.Isbn} | {book.Name}";
+            lbISBNAndName.Text = $"ISBN: {book.Isbn} | {book.Name}";
             lbAuthor.Text = $"Автор: {book.Author?.Name}";
             lbGenre.Text = $"Жанр: {book.Genre?.Name}";
             lbPublish.Text = $"Издательсва: {book.Publisher?.Name}";
@@ -25,45 +25,47 @@ namespace ShopLibrary
             lbAvailable.Text = $"Доступно: {book.Available}";
             lbAnnotation.Text = $"Аннотация: {book.Annotation}";
 
-            int available = book.Available;
-            string currentStatusText = null;
+            string currentStatusText = "В наличии";
+            //просрочен
             bool isOverdue = false;
-
+            //выдача книг
             if (book.BookLoans != null && book.BookLoans.Count > 0)
             {
-                var lastLoan = book.BookLoans.OrderByDescending(bl => bl.DateOfIssue).FirstOrDefault();
-                if (lastLoan != null)
+                var lastLoan = book.BookLoans
+                    //сортируем дату выдачи от самой новой к самой старой
+                    .OrderByDescending(bl => bl.DateOfIssue)
+                    //берём самую первую запись
+                    .FirstOrDefault();
+                
+                if (lastLoan.Status != null)
                 {
-                    if (lastLoan.Status != null)
-                    {
-                        currentStatusText = lastLoan.Status.Name;
-                    }
+                    currentStatusText = lastLoan.Status.Name;
+                    lbStatus.Text = $"Статус: {currentStatusText}";
+                }
 
-                    if (lastLoan.ActualReturnDate == null && (DateTime.Now - lastLoan.DateOfIssue).TotalDays > 30)
-                    {
-                        isOverdue = true;
-                    }
+                if (lastLoan.ActualReturnDate == null && (DateTime.Now - lastLoan.DateOfIssue).TotalDays > 30)
+                {
+                    isOverdue = true;
                 }
             }
-            lbStatus.Text = $"Статус: {currentStatusText}";
 
             if (isOverdue)
             {
-                this.BackColor = ColorTranslator.FromHtml("#D4EDDA");
+                BackColor = ColorTranslator.FromHtml("#D4EDDA");
             }
-            else if (available == 0)
+            else if (book.Available == 0)
             {
-                this.BackColor = ColorTranslator.FromHtml("#FFCCCC");
-                lbStatus.Text = $"Статус: Нет в наличии";
+                BackColor = ColorTranslator.FromHtml("#FFCCCC");
+                lbStatus.Text = "Статус: Нет в наличии";
             }
-            else if (available <= 2)
+            else if (book.Available <= 2)
             {
-                this.BackColor = ColorTranslator.FromHtml("#FFF3CD");
-                lbStatus.Text = $"Статус: Мало Экземпляров";
+                BackColor = ColorTranslator.FromHtml("#FFF3CD");
+                lbStatus.Text = "Статус: Мало экземпляров";
             }
             else
             {
-                this.BackColor = ColorTranslator.FromHtml("#F0F8FF");
+                BackColor = ColorTranslator.FromHtml("#F0F8FF");
             }
         }
 
@@ -73,9 +75,7 @@ namespace ShopLibrary
             {
                 string rn = Path.GetFileNameWithoutExtension(Image).Trim();
 
-                var rm = Properties.Resources.ResourceManager;
-
-                if (rm.GetObject(rn) is Image img)
+                if (Resources.ResourceManager.GetObject(rn) is Image img)
                 {
                     return img;
                 }
