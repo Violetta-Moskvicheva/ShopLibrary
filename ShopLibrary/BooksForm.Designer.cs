@@ -32,12 +32,14 @@
             pnTop = new Panel();
             btLogout = new Button();
             flpBooks = new FlowLayoutPanel();
+            label1 = new Label();
             pnTop.SuspendLayout();
             SuspendLayout();
             // 
             // pnTop
             // 
             pnTop.BackColor = Color.AliceBlue;
+            pnTop.Controls.Add(label1);
             pnTop.Controls.Add(btLogout);
             pnTop.Dock = DockStyle.Top;
             pnTop.Location = new Point(0, 0);
@@ -71,6 +73,15 @@
             flpBooks.TabIndex = 1;
             flpBooks.WrapContents = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(412, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(73, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Каталог книг";
+            // 
             // BooksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -85,6 +96,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "\"Читай-город\" Список книг";
             pnTop.ResumeLayout(false);
+            pnTop.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -93,5 +105,6 @@
         private Panel pnTop;
         private FlowLayoutPanel flpBooks;
         private Button btLogout;
+        private Label label1;
     }
 }

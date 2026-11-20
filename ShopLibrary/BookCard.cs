@@ -24,10 +24,10 @@ namespace ShopLibrary
             lbTotalCount.Text = $"Всего экземпляр: {book.TotalQuantity}";
             lbAvailable.Text = $"Доступно: {book.Available}";
             lbAnnotation.Text = $"Аннотация: {book.Annotation}";
+            lbStatus.Text = $"Статус: В наличии";
 
-            string currentStatusText = "В наличии";
             //просрочен
-            bool isOverdue = false;
+            bool isLongTernIssue = false;
             //выдача книг
             if (book.BookLoans != null && book.BookLoans.Count > 0)
             {
@@ -39,17 +39,16 @@ namespace ShopLibrary
                 
                 if (lastLoan.Status != null)
                 {
-                    currentStatusText = lastLoan.Status.Name;
-                    lbStatus.Text = $"Статус: {currentStatusText}";
+                    lbStatus.Text = $"Статус: {lastLoan.Status.Name}";
                 }
 
                 if (lastLoan.ActualReturnDate == null && (DateTime.Now - lastLoan.DateOfIssue).TotalDays > 30)
                 {
-                    isOverdue = true;
+                    isLongTernIssue = true;
                 }
             }
 
-            if (isOverdue)
+            if (isLongTernIssue)
             {
                 BackColor = ColorTranslator.FromHtml("#D4EDDA");
             }
